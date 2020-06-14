@@ -1,0 +1,56 @@
+npm run typeorm migration:create -- -n createClass
+cria uma migration chamada createClass DENTRO de migrations.
+
+isso cria uma migration com duas coisas: up e down.
+UP aqui é o que eu quero que seja criado quando a migração for executada.
+  cria tabela / muda o campo de nome pra description / adiciona uma nova coluna
+DOWN é quando essa migration é desfeita, o que tem que acontecer?
+  dropa a tabela / muda o campo de description pra nome / apaga a nova coluna
+
+npm run typeorm migration:run
+cria as migrations depois delas serem configuradas anteriormente.
+
+npm run typeorm migration:revert
+desfaz a última migração
+
+-----------------------------------------------------------
+
+ENTIDADES - MODELS - representa a tabela do banco
+Criando entidade pelo CLI:
+"npx typeorm entity:create -n Class"
+
+Se quiser criar o diretório enquanto cira a entidade, pode colocar
+"npx typeorm entity:create -n Class -d src/model/class"...
+
+------------------------------------------------------------
+
+REPOSITORIES
+
+------------------------------------------------------------
+
+FORMAS DE CRIAR TABELAS:
+1 - RÁPIDO - simples, não recomendada por não ter versionamento:
+colocar no ormconfig.json a flag: "synchronize": true
+2 - DEVAGAR - recomendada pelos DBAs:
+"npm run typeorm migration:create -- -n createClass(nome da tabela)"
+cria sozinho dentro da pasta src/database/migration o arquivo "92837194782-createClass.ts"
+SE estiver configurado no ormconfig.json
+Aí tem que codar o up (entra a migração) e o down (sai a migração)
+Depois disso, usar o comando
+"npm run typeorm migration:run"
+agora existem duas tabelas no BD: 1 - createClass 2 - migrations (onde tá o versionamento de tabelas)
+3 - CUSTO/BENEFÍCIO - 
+"npm run typeorm migration:generate -- -n createClass"
+Ele pega baseado no que tem na model e cria uma tabela com isso.
+Então faz primeiro o Class.ts no models e depois cria esse comando que vai fazer a tabela de acordo com o SQL.
+DEPOIS só rodar o "npm run typeorm migration:run"
+
+CRIEI UM CAMPO NOVO, E AGORA?
+altera o arquivo, por exemplo coloca o campo 
+@Column()
+exp: number 
+dentro do Class.ts
+
+Depois é só rodar um
+npm run typeorm migration:generate -- -n AddFieldExpClass
+Daí ele cria uma nova migração, com essa nova coluna. 
