@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { getRepository, getCustomRepository } from 'typeorm';
 import Class from '../models/Class';
-import { get } from 'https';
 import ClassRepository from '../repositories/ClassRepositories';
 
 const classRouter = Router();
