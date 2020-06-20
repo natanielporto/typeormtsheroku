@@ -54,3 +54,16 @@ dentro do Class.ts
 Depois é só rodar um
 npm run typeorm migration:generate -- -n AddFieldExpClass
 Daí ele cria uma nova migração, com essa nova coluna. 
+
+---------------------------------------------------------
+
+ACESSANDO O BD PELO TERMINAL
+heroku pg:psql -a youtubesnataniel
+
+\dt mostra todas as relations.
+
+ACESSANDO O HEROKU REMOTO PELO TERMINAL
+heroku run bash -a youtubetsnataniel
+
+--------------------------------------------------------
+
