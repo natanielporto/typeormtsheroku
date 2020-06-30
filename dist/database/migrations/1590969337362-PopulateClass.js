@@ -36,33 +36,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var CreateClass1591489168931 = /** @class */ (function () {
-    function CreateClass1591489168931() {
+var PopulateClass1590893368742 = /** @class */ (function () {
+    function PopulateClass1590893368742() {
     }
-    CreateClass1591489168931.prototype.up = function (queryRunner) {
+    PopulateClass1590893368742.prototype.up = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.query("CREATE TABLE \"class\" (\"id\" uuid NOT NULL DEFAULT uuid_generate_v4(), \"name\" character varying(100) NOT NULL, \"duration\" integer NOT NULL, \"created_At\" TIMESTAMP NOT NULL DEFAULT now(), \"update_At\" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT \"UQ_574dd394846fb85d495d0f77dfd\" UNIQUE (\"name\"), CONSTRAINT \"PK_0b9024d21bdfba8b1bd1c300eae\" PRIMARY KEY (\"id\"))")];
+                    case 0: return [4 /*yield*/, queryRunner.query("INSERT INTO class (name, duration) VALUES ('Engenharia de Software III', 60)")];
                     case 1:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("INSERT INTO class (name, duration) VALUES ('Engenharia de Software II', 60)")];
+                    case 2:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    CreateClass1591489168931.prototype.down = function (queryRunner) {
+    PopulateClass1590893368742.prototype.down = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.query("DROP TABLE \"class\"")];
+                    case 0: return [4 /*yield*/, queryRunner.query("DELETE FROM class WHERE name = 'Engenharia de Software III'")];
                     case 1:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("DELETE FROM class WHERE name = 'Engenharia de Software II'")];
+                    case 2:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    return CreateClass1591489168931;
+    return PopulateClass1590893368742;
 }());
-exports.default = CreateClass1591489168931;
+exports.default = PopulateClass1590893368742;

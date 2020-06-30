@@ -7,11 +7,11 @@ const classRouter = Router();
 
 classRouter.post('/', async (request, response) => {
   try {
-    const repo = getRepository(Class)
+    const repo = getRepository(Class);
     const res = await repo.save(request.body);
-    return response.status(201).json(res)
+    return response.status(201).json(res);
   } catch (err) {
-    console.log('err.message :>>', err.message)
+    console.log('err.message :', err.message);
   }
 });
 
@@ -21,7 +21,7 @@ classRouter.get('/', async (request, response) => {
 
 classRouter.get('/:name', async (request, response) => {
   const repository = getCustomRepository(ClassRepository);
-  const res = await repository.findByName(request.params.name)
+  const res = await repository.findByName(request.params.name);
   response.json(res);
 });
 

@@ -57,7 +57,7 @@ classRouter.post('/', function (request, response) { return __awaiter(void 0, vo
                 return [2 /*return*/, response.status(201).json(res)];
             case 2:
                 err_1 = _a.sent();
-                console.log('err.message :>>', err_1.message);
+                console.log('err.message :', err_1.message);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
