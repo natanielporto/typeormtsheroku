@@ -10,9 +10,14 @@ DOWN é quando essa migration é desfeita, o que tem que acontecer?
 npm run typeorm migration:run
 cria as migrations depois delas serem configuradas anteriormente.
 
+npm run typeorm migration:show
+mostra a última migration feita.
+
 npm run typeorm migration:revert
 desfaz a última migração
 
+CODAR UMA CRIAÇÃO É QUESTÃO DE BOA PRÁTICA. TEM ATÉ A POSSIBILIDADE DE GERAR
+A MIGRAÇÃO SOZINHA, MAS NÃO É BOA PRÁTICA. CRIA ELA NO BRAÇO QUE É MELHOR.
 -----------------------------------------------------------
 
 ENTIDADES - MODELS - representa a tabela do banco
@@ -25,6 +30,8 @@ Se quiser criar o diretório enquanto cira a entidade, pode colocar
 ------------------------------------------------------------
 
 REPOSITORIES
+QUANDO SE CRIA UM REPOSITORY? 
+Quando se quer fazer uma consulta que não existe já no typeORM.
 
 ------------------------------------------------------------
 
