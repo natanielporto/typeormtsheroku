@@ -8,8 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
+var Class_1 = __importDefault(require("./Class"));
 var Student = /** @class */ (function () {
     function Student() {
     }
@@ -25,6 +29,11 @@ var Student = /** @class */ (function () {
         typeorm_1.Column(),
         __metadata("design:type", Number)
     ], Student.prototype, "key", void 0);
+    __decorate([
+        typeorm_1.ManyToMany(function (type) { return Class_1.default; }),
+        typeorm_1.JoinTable(),
+        __metadata("design:type", Class_1.default)
+    ], Student.prototype, "classes", void 0);
     __decorate([
         typeorm_1.CreateDateColumn({ name: 'created_At' }),
         __metadata("design:type", Date)

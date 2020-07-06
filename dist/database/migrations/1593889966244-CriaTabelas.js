@@ -36,33 +36,52 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var CreateClass1591489168931 = /** @class */ (function () {
-    function CreateClass1591489168931() {
+var CriaTabelas1593889966244 = /** @class */ (function () {
+    function CriaTabelas1593889966244() {
+        this.name = 'CriaTabelas1593889966244';
     }
-    CreateClass1591489168931.prototype.up = function (queryRunner) {
+    CriaTabelas1593889966244.prototype.up = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.query("CREATE TABLE \"class\" (\"id\" uuid NOT NULL DEFAULT uuid_generate_v4(), \"name\" character varying(100) NOT NULL, \"duration\" integer NOT NULL, \"created_At\" TIMESTAMP NOT NULL DEFAULT now(), \"update_At\" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT \"UQ_574dd394846fb85d495d0f77dfd\" UNIQUE (\"name\"), CONSTRAINT \"PK_0b9024d21bdfba8b1bd1c300eae\" PRIMARY KEY (\"id\"))")];
+                    case 0: return [4 /*yield*/, queryRunner.query("CREATE TABLE \"class\" (\"id\" uuid NOT NULL DEFAULT uuid_generate_v4(), \"name\" character varying(100) NOT NULL, \"duration\" integer NOT NULL, \"created_At\" TIMESTAMP NOT NULL DEFAULT now(), \"updated_At\" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT \"UQ_574dd394846fb85d495d0f77dfd\" UNIQUE (\"name\"), CONSTRAINT \"PK_0b9024d21bdfba8b1bd1c300eae\" PRIMARY KEY (\"id\"))")];
                     case 1:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("CREATE TABLE \"content\" (\"id\" uuid NOT NULL DEFAULT uuid_generate_v4(), \"description\" character varying NOT NULL, \"linkContent\" character varying NOT NULL, CONSTRAINT \"PK_6a2083913f3647b44f205204e36\" PRIMARY KEY (\"id\"))")];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("CREATE TABLE \"lesson\" (\"id\" uuid NOT NULL DEFAULT uuid_generate_v4(), \"description\" character varying NOT NULL, \"created_At\" TIMESTAMP NOT NULL DEFAULT now(), \"updated_At\" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT \"PK_0ef25918f0237e68696dee455bd\" PRIMARY KEY (\"id\"))")];
+                    case 3:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("CREATE TABLE \"student\" (\"id\" uuid NOT NULL DEFAULT uuid_generate_v4(), \"name\" character varying NOT NULL, \"key\" integer NOT NULL, \"created_At\" TIMESTAMP NOT NULL DEFAULT now(), \"updated_At\" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT \"PK_3d8016e1cb58429474a3c041904\" PRIMARY KEY (\"id\"))")];
+                    case 4:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    CreateClass1591489168931.prototype.down = function (queryRunner) {
+    CriaTabelas1593889966244.prototype.down = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.query("DROP TABLE \"class\"")];
+                    case 0: return [4 /*yield*/, queryRunner.query("DROP TABLE \"student\"")];
                     case 1:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("DROP TABLE \"lesson\"")];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("DROP TABLE \"content\"")];
+                    case 3:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("DROP TABLE \"class\"")];
+                    case 4:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    return CreateClass1591489168931;
+    return CriaTabelas1593889966244;
 }());
-exports.default = CreateClass1591489168931;
+exports.default = CriaTabelas1593889966244;

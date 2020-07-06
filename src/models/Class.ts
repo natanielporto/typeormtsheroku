@@ -1,4 +1,5 @@
-import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import Lesson from './Lessons';
 
 @Entity('class') //isso se chama decorator / anotação
 //esse entity sinaliza que CLASS é uma ENTIDADE do BANCO DE DADOS
@@ -13,6 +14,9 @@ export default class Class {
     unique: true,
   })
   name: string;
+
+  @OneToMany(type => Lesson, classe => Class)
+  lessons: Lesson[]
 
   @Column()
   duration: number;

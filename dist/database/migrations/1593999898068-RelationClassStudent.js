@@ -36,35 +36,58 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaTabelas1593882212799 = void 0;
-var CriaTabelas1593882212799 = /** @class */ (function () {
-    function CriaTabelas1593882212799() {
-        this.name = 'CriaTabelas1593882212799';
+var RelationClassStudent1593999898068 = /** @class */ (function () {
+    function RelationClassStudent1593999898068() {
+        this.name = 'RelationClassStudent1593999898068';
     }
-    CriaTabelas1593882212799.prototype.up = function (queryRunner) {
+    RelationClassStudent1593999898068.prototype.up = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.query("CREATE TABLE \"class\" (\"id\" uuid NOT NULL DEFAULT uuid_generate_v4(), \"name\" character varying(100) NOT NULL, \"duration\" integer NOT NULL, \"created_At\" TIMESTAMP NOT NULL DEFAULT now(), \"updated_At\" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT \"UQ_574dd394846fb85d495d0f77dfd\" UNIQUE (\"name\"), CONSTRAINT \"PK_0b9024d21bdfba8b1bd1c300eae\" PRIMARY KEY (\"id\"))")];
+                    case 0: return [4 /*yield*/, queryRunner.query("CREATE TABLE \"student_classes_class\" (\"studentId\" uuid NOT NULL, \"classId\" uuid NOT NULL, CONSTRAINT \"PK_9f2c655a5feb7cff342af016c8e\" PRIMARY KEY (\"studentId\", \"classId\"))")];
                     case 1:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("CREATE INDEX \"IDX_4e224193a4e2c8e1b28afa74e9\" ON \"student_classes_class\" (\"studentId\") ")];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("CREATE INDEX \"IDX_3d4b9aa106e0113abd39f06182\" ON \"student_classes_class\" (\"classId\") ")];
+                    case 3:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("ALTER TABLE \"student_classes_class\" ADD CONSTRAINT \"FK_4e224193a4e2c8e1b28afa74e9d\" FOREIGN KEY (\"studentId\") REFERENCES \"student\"(\"id\") ON DELETE CASCADE ON UPDATE NO ACTION")];
+                    case 4:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("ALTER TABLE \"student_classes_class\" ADD CONSTRAINT \"FK_3d4b9aa106e0113abd39f061827\" FOREIGN KEY (\"classId\") REFERENCES \"class\"(\"id\") ON DELETE CASCADE ON UPDATE NO ACTION")];
+                    case 5:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    CriaTabelas1593882212799.prototype.down = function (queryRunner) {
+    RelationClassStudent1593999898068.prototype.down = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.query("DROP TABLE \"class\"")];
+                    case 0: return [4 /*yield*/, queryRunner.query("ALTER TABLE \"student_classes_class\" DROP CONSTRAINT \"FK_3d4b9aa106e0113abd39f061827\"")];
                     case 1:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("ALTER TABLE \"student_classes_class\" DROP CONSTRAINT \"FK_4e224193a4e2c8e1b28afa74e9d\"")];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("DROP INDEX \"IDX_3d4b9aa106e0113abd39f06182\"")];
+                    case 3:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("DROP INDEX \"IDX_4e224193a4e2c8e1b28afa74e9\"")];
+                    case 4:
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.query("DROP TABLE \"student_classes_class\"")];
+                    case 5:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    return CriaTabelas1593882212799;
+    return RelationClassStudent1593999898068;
 }());
-exports.CriaTabelas1593882212799 = CriaTabelas1593882212799;
+exports.default = RelationClassStudent1593999898068;

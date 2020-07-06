@@ -8,13 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
+var Lessons_1 = __importDefault(require("./Lessons"));
 var Class = /** @class */ (function () {
     //esse entity sinaliza que CLASS é uma ENTIDADE do BANCO DE DADOS
     //no MIGRATION SE CRIOU A TABELA, AQUI VAMOS CRIAR AS COLUNAS
     function Class() {
     }
+    Class_1 = Class;
+    var Class_1;
     __decorate([
         typeorm_1.PrimaryGeneratedColumn('uuid'),
         __metadata("design:type", String)
@@ -27,6 +33,10 @@ var Class = /** @class */ (function () {
         __metadata("design:type", String)
     ], Class.prototype, "name", void 0);
     __decorate([
+        typeorm_1.OneToMany(function (type) { return Lessons_1.default; }, function (classe) { return Class_1; }),
+        __metadata("design:type", Array)
+    ], Class.prototype, "lessons", void 0);
+    __decorate([
         typeorm_1.Column(),
         __metadata("design:type", Number)
     ], Class.prototype, "duration", void 0);
@@ -38,7 +48,7 @@ var Class = /** @class */ (function () {
         typeorm_1.UpdateDateColumn({ name: 'updated_At' }),
         __metadata("design:type", Date)
     ], Class.prototype, "updatedAt", void 0);
-    Class = __decorate([
+    Class = Class_1 = __decorate([
         typeorm_1.Entity('class') //isso se chama decorator / anotação
         //esse entity sinaliza que CLASS é uma ENTIDADE do BANCO DE DADOS
         //no MIGRATION SE CRIOU A TABELA, AQUI VAMOS CRIAR AS COLUNAS

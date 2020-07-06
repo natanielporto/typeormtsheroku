@@ -8,15 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
+var Lessons_1 = __importDefault(require("./Lessons"));
 var Content = /** @class */ (function () {
     function Content() {
     }
+    Content_1 = Content;
+    var Content_1;
     __decorate([
         typeorm_1.PrimaryGeneratedColumn('uuid'),
         __metadata("design:type", String)
     ], Content.prototype, "id", void 0);
+    __decorate([
+        typeorm_1.OneToOne(function (type) { return Lessons_1.default; }, function (content) { return Content_1; }),
+        typeorm_1.JoinColumn(),
+        __metadata("design:type", Lessons_1.default)
+    ], Content.prototype, "lesson", void 0);
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
@@ -25,7 +36,7 @@ var Content = /** @class */ (function () {
         typeorm_1.Column(),
         __metadata("design:type", String)
     ], Content.prototype, "linkContent", void 0);
-    Content = __decorate([
+    Content = Content_1 = __decorate([
         typeorm_1.Entity('content')
     ], Content);
     return Content;
